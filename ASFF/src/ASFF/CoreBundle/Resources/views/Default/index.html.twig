@@ -1,0 +1,175 @@
+{# src/ASFF/CoreBundle/Resources/views/Default/index.html.twig #}
+
+{% extends "ASFFCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <h2>Bienvenue ami(e)s Badistes</h2>
+    </div>
+    <div class="col-md-7">
+      <h4>Ce site présente les activités de la section Badminton de l'Association Sportive de Fontenay-le-Fleury ( 78 )</h4>
+      <p>N'hésitez pas à nous faire part de toutes vos demandes et remarques pour qu'il réponde au mieux à vos attentes.</p></div></div>
+    <div class="col-md-1"></div>
+  <br>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="{{ asset('images/carousel/1.jpg') }}" width="100%" height="100%">
+          </div>
+
+          <div class="item">
+            <img src="{{ asset('images/carousel/2.jpg') }}" width="100%" height="100%">
+          </div>
+
+          <div class="item">
+            <img src="{{ asset('images/carousel/3.jpg') }}" width="100%" height="100%">
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div></div></div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a href="#" class="btn btn-primary btn-block"><h4>Interclubs</h4></a>
+      <div id="InterclubsCarousel" class="carousel slide" data-ride="carousel" align="center">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#InterclubsCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#InterclubsCarousel" data-slide-to="1"></li>
+          <li data-target="#InterclubsCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="{{ asset('images/tournois/interclub_vierge.jpg') }}" width="60%" height="60%">
+          </div>
+
+          <div class="item">
+            <img src="{{ asset('images/tournois/interclub_vierge.jpg') }}" width="60%" height="60%">
+          </div>
+
+          <div class="item">
+            <img src="{{ asset('images/tournois/interclub_vierge.jpg') }}" width="60%" height="60%">
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#InterclubsCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#InterclubsCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div></div>
+    <div class="col-md-4">
+      <a href="#" class="btn btn-primary btn-block"><h4>Rendez-vous du Club</h4></a>
+      <div id="ClubCarousel" class="carousel slide" data-ride="carousel" align="center">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#ClubCarousel" data-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="{{ asset('images/actualites/6.jpeg') }}" width="60%" height="60%">
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#ClubCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#ClubCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div></div>
+    <div class="col-md-4">
+      <a href="{{ path('asff_tournois_home') }}" class="btn btn-primary btn-block"><h4>Tournois</h4></a>
+      <div id="TournoisCarousel" class="carousel slide" data-ride="carousel" align="center">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#TournoisCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#TournoisCarousel" data-slide-to="1"></li>
+          <li data-target="#TournoisCarousel" data-slide-to="2"></li>
+          <li data-target="#TournoisCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <a href="{{ path('asff_tournois_view', {'id': listTournois[0].id}) }}" title="{{ listTournois[0].adversaire }}"><img src="{{ asset('images/tournois/tournois_vierge.jpg') }}" width="100%" height="100px"/></a>
+            <div class="carousel-caption">
+              <h3>{{ listTournois[0].adversaire }}</h3>
+              <p>Le {{ listTournois[0].datetournois|date('d/m/Y') }}</p>
+              <p>Limite d'inscription {{ listTournois[0].datelimit|date('d/m/Y') }}</p>
+            </div>
+          </div>
+
+          {% for tournois in listTournois|slice(1,3) %}
+            <div class="item">
+              <img src="{{ path('asff_tournois_view', {'id': tournois.id}) }}"><img src="{{ asset('images/tournois/tournois_vierge.jpg') }}" width="100%" height="60%"/></a>
+              <div class="carousel-caption">
+                <h3>{{ tournois.adversaire }}</h3>
+                <p>Le {{ tournois.datetournois|date('d/m/Y') }}</p>
+                <p>Limite d'inscription {{ tournois.datelimit|date('d/m/Y') }}</p>
+              </div>
+            </div>
+           {% endfor %}
+          </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#TournoisCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#TournoisCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div></div></div></div>
+
+<hr>
+
+<p><a class="btn btn-primary btn-lg" href="http://asff-badminton.com"> Lien vers le site actuel </a></p>
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+asff_user_home:
+    path:     /
+    defaults: { _controller: ASFFUserBundle:MonCompte:index }
+

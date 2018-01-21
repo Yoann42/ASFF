@@ -1,0 +1,27 @@
+{# src/ASFF/TournoisBundle/Resources/view/Tournois/edit.html.twig #}
+
+{% extends "ASFFTournoisBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+  <h2>{{ tournois.adversaire }}</h2>
+  
+  <br>
+  
+  <h3>Mon classement</h3>
+  <p>Simple : {{ user.msn }}</p>
+  <p>Double : {{ user.aim }}</p>
+  <p>Mixte : {{ user.yim }}</p>
+		
+  <br>
+	
+  {{ include("ASFFTournoisBundle:Inscription:form.html.twig") }}
+  
+  <p>
+	<a href="{{ path('asff_tournois_home') }}" class="btn btn-default">
+		<i class="glyphicon glyphicon-chevron-left"></i>
+		Retour à la liste des tournois
+	</a>
+  </p>
+
+{% endblock %}

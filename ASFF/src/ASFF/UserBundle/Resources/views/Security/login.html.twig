@@ -1,0 +1,38 @@
+{# src/ASFF/UserBundle/Resources/views/Security/login.html.twig #}
+
+{% extends "ASFFUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+  
+  <br>
+  
+  {# S'il y a une erreur, on l'affiche dans un joli cadre #}
+  {% if error %}
+    <div class="alert alert-danger">{{ error.message }}</div>
+  {% endif %}
+
+  {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+<form class="panel panel-primary" action="{{ path('fos_user_security_check') }}" method="POST">
+  <div class="panel-heading">
+    <h2>Connexion</h2>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-4">
+      <label for="username">Login :</label>
+      <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    </div>
+    <div class="col-md-4">
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="_password" />
+    </div>
+    <div class="col-md-4">
+      <input type="submit" value="Connexion" />
+    </div>
+  </div>
+  <div class="panel-footer">
+    <p>Si vous n'êtes pas encore inscrit, il faut cliquer <a href="{{ path('fos_user_registration_register') }}"> ici</a></p>
+    <p>Vous avez oublié votre mot de passe, c'est par  <a href="{{ path('fos_user_resetting_request') }}"> ici</a></p>
+  </div>
+</form>
+
+{% endblock fos_user_content %}

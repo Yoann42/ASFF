@@ -1,0 +1,34 @@
+# src/ASFF/ActualiteBundle/Resources/config/routing.yml
+    
+asff_actualite_home:
+    path:      /
+    defaults: 
+        _controller: ASFFActualiteBundle:Actu:index
+
+asff_actualite_view:
+    path:      /{id}
+    defaults: 
+        _controller: ASFFActualiteBundle:Actu:view
+    requirements:
+        id: \d+
+
+asff_actualite_add:
+    path:      /add
+    defaults:
+        _controller: ASFFActualiteBundle:Actu:add
+    
+
+asff_actualite_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: ASFFActualiteBundle:Actu:edit
+    requirements:
+        id: \d+
+
+
+asff_actualite_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: ASFFActualiteBundle:Actu:delete
+    requirements:
+        id: \d+

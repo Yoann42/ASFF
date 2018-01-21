@@ -1,0 +1,57 @@
+asff_tournois_home:
+    path:     /
+    defaults: { _controller: ASFFTournoisBundle:Tournois:index }
+    
+asff_tournois_view:
+    path:      /{id}
+    defaults: 
+        _controller: ASFFTournoisBundle:Tournois:view
+    requirements:
+        id: \d+
+
+asff_tournois_add:
+    path:      /add
+    defaults:
+        _controller: ASFFTournoisBundle:Tournois:add
+        
+asff_tournois_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: ASFFTournoisBundle:Tournois:edit
+    requirements:
+        id: \d+
+
+asff_tournois_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: ASFFTournoisBundle:Tournois:delete
+    requirements:
+        id: \d+
+        
+asff_tournois_getinfo:
+    path:      /recupererparticipant/{id}
+    defaults: 
+        _controller: ASFFTournoisBundle:Tournois:getparticipants
+    requirements:
+        id: \d+
+
+asff_tournois_inscription_add:
+    path:      /inscription/add/{id}
+    defaults: 
+        _controller: ASFFTournoisBundle:Inscription:add
+    requirements:
+        id: \d+
+        
+asff_tournois_inscription_edit:
+    path:      /inscription/edit/{id}
+    defaults: 
+        _controller: ASFFTournoisBundle:Inscription:edit
+    requirements:
+        id: \d+
+        
+asff_tournois_inscription_delete:
+    path:      /inscription/delete/{id}
+    defaults: 
+        _controller: ASFFTournoisBundle:Inscription:delete
+    requirements:
+        id: \d+

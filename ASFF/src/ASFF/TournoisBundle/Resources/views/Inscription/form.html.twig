@@ -1,0 +1,99 @@
+{# src/ASFF/TournoisBundle/Resources/views/Inscription/form.html.twig #}
+
+
+
+<div class="panel panel-primary">
+      <div class="panel-heading"><h3>Formulaire d'inscription</h3></div>
+      <div class="panel-body">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="row">
+      <div class="col-md-5">
+        {{ form_label(form.match_simple) }}
+        {{ form_errors(form.match_simple) }}
+        {{ form_widget(form.match_simple, {'attr': {'class': 'form-CheckBoxType'}}) }}
+      </div>
+    </div>
+
+  <br><br>
+
+    <div class="row">
+      <div class="col-md-5">
+        {{ form_label(form.match_double) }}
+        {{ form_errors(form.match_double) }}
+        {{ form_widget(form.match_double, {'attr': {'class': 'form-CheckBoxType'}}) }}
+      </div>
+    </div>
+  <br>
+    <div class="row">
+      <div class="col-md-4">
+        {{ form_label(form.partenaire_double) }}
+        {{ form_errors(form.partenaire_double) }}
+        {{ form_widget(form.partenaire_double, {'attr': {'class': 'form-EntityType'}}) }}
+      </div>
+      <div class="col-md-4">
+        {{ form_label(form.partenaire_double_ext) }}
+        {{ form_errors(form.partenaire_double_ext) }}
+        {{ form_widget(form.partenaire_double_ext, {'attr': {'class': 'form-TextType'}}) }}
+      </div>
+      <div class="col-md-3">
+        {{ form_label(form.club_double_ext) }}
+        {{ form_errors(form.club_double_ext) }}
+        {{ form_widget(form.club_double_ext, {'attr': {'class': 'form-TextType'}}) }}
+      </div>
+    </div>
+
+  <br><br>
+
+    <div class="row">
+      <div class="col-md-5">
+        {{ form_label(form.match_mixte) }}
+        {{ form_errors(form.match_mixte) }}
+        {{ form_widget(form.match_mixte, {'attr': {'class': 'form-CheckBoxType'}}) }}
+      </div>
+    </div>
+  <br>
+    <div class="row">
+      <div class="col-md-4">
+        {{ form_label(form.partenaire_mixte) }}
+        {{ form_errors(form.partenaire_mixte) }}
+        {{ form_widget(form.partenaire_mixte, {'attr': {'class': 'form-EntityType'}}) }}
+      </div>
+      <div class="col-md-4">
+        {{ form_label(form.partenaire_mixte_ext) }}
+        {{ form_errors(form.partenaire_mixte_ext) }}
+        {{ form_widget(form.partenaire_mixte_ext, {'attr': {'class': 'form-TextType'}}) }}
+      </div>
+      <div class="col-md-3">
+        {{ form_label(form.club_mixte_ext) }}
+        {{ form_errors(form.club_mixte_ext) }}
+        {{ form_widget(form.club_mixte_ext, {'attr': {'class': 'form-TextType'}}) }}
+      </div>
+    </div>
+
+  <br><br>
+
+    <div class="row">
+      <div class="col-md-11">
+        {{ form_label(form.remarque) }}
+        {{ form_errors(form.remarque) }}
+        {{ form_widget(form.remarque, {'attr': {'class': 'form-TextareaType'}}) }}
+      </div>
+    </div>
+
+  <br><br>
+
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits.
+       Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+       et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+  </div>
+</div>

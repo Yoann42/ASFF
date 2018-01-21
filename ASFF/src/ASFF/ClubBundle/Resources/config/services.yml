@@ -1,0 +1,4 @@
+services:
+#    asff_club.example:
+#        class: ASFF\ClubBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

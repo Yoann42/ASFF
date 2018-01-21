@@ -1,0 +1,54 @@
+{# src/ASFF/UserBundle/Resources/views/layout.html.twig #}
+
+{# On étend notre layout #}
+{% extends "ASFFCoreBundle::layout.html.twig" %}
+
+{% block title %}
+  Mon compte - {{ parent() }}
+{% endblock %}
+
+{# Dans notre layout, il faut définir le block body #}
+{% block body %}
+  <div class="row">
+    <div class="col-md-7"><h1>Mon compte</h1>
+    </div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      <div class="col-md-2">
+        <div class="btn-group">
+          <button type="button" class="btn btn-lg btn-block btn-default dropdown-toggle" data-toggle="dropdown">Action sur mon profil  <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{ path('fos_user_change_password') }}">Changer mon mot de passe</a></li>
+            <li><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        {% if app.user.image is not null %}
+          <img src="{{ asset(app.user.image.webPath) }}" width="10%"  height="10%" class="img-circle" alt="{{ app.user.image.alt }}"/>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+   
+  <hr>
+
+  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+  <div class="row">
+    {% for key, messages in app.session.flashbag.all() %}
+      {% for message in messages %}
+        <div class="alert alert-{{ key }}">
+          {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+  <div class="row">
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+  </div>
+
+{% endblock %}

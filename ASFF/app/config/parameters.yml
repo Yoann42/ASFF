@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: asff
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: smtp-mail.outlook.com
+    mailer_user: tes_asff_78@outlook.fr
+    mailer_password: clubASFF
+    mailer_port: 587
+    secret: d8a64436c5d8b7f5e043029b31395274dab39bea
+    app_webmaster: Yoyo

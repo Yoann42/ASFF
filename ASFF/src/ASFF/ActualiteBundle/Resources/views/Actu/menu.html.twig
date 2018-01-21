@@ -1,0 +1,14 @@
+{# src/ASFF/ActualiteBundle/Resources/views/Advert/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+   tout comme le template inclus avec {{ include() }}. #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for actu in listActus %}
+    <li>
+      <a href="{{ path('asff_actualite_view', {'id': actu.id}) }}">
+        {{ actu.titre }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

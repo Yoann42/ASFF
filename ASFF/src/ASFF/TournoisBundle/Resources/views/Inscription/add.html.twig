@@ -1,0 +1,66 @@
+{# src/ASFF/TournoisBundle/Resources/view/Tournois/add.html.twig #}
+
+{% extends "ASFFTournoisBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+<h2>{{ tournois.adversaire }}</h2>
+
+<br>
+  
+{% if ok == 0 %}
+	<div class="well">
+		Désolé {{ user.prenom }}, mais tu es déjà inscrit.
+	</div>
+{% else %}
+	{% if ok == 1 %}
+		<div class="container-fluid">
+			<div class="col-md-8">
+				{{ include("ASFFTournoisBundle:Inscription:form.html.twig") }}
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading"><h3>Classement de {{ user.prenom }} {{ user.nom }}</h3></div>
+					<div class="panel-body">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><center>Licence</center></th>
+									<th><center>Simple</center></th>
+									<th><center>Double</center></th>
+									<th><center>Mixte</center></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td><center>{{ user.licence }}</center></td>
+									<td><center><b>{{ user.msn }}</b></center></td>
+									<td><center><b>{{ user.aim }}</b></center></td>
+									<td><center><b>{{ user.yim }}</b></center></td>
+								</tr>
+							<tbody>
+						</table>
+					</div>
+					
+					<div class="panel-footer">
+						<center><small><i>Si vous ne voyez pas votre classement c'est que vous n'êtes pas encore classé ou que votre numéro de licence est mal renseigné</i></small></center>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="panel panel-primary">
+			Désolé {{ user.prenom }}, mais la date limite d'inscription est atteinte.
+		</div>
+	{% endif %}
+{% endif %}
+  
+
+<a href="{{ path('asff_tournois_home') }}" class="btn btn-default">
+	<i class="glyphicon glyphicon-chevron-left"></i>
+	Retour à la liste des tournois
+</a>
+
+
+{% endblock %}

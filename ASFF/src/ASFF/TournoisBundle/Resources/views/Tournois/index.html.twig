@@ -1,0 +1,80 @@
+{# src/ASFF/TournoisBundle/Resources/views/Touronis/index.html.twig #}
+
+{% extends "ASFFTournoisBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+  
+
+<br><br>
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h2>Liste des tournois</h2></div>
+  <div class="panel-body">
+
+    <table class="table">
+      <thead>
+          <tr>
+            <th><center>Tournois</center></th>
+            <th><center>Date du tournois</center></th>
+            <th><center>Limite d'inscription</center></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for tournois in listTournois %}
+          <tr>
+            <td><b><center>{{ tournois.adversaire }}</center></b></td>
+            <td><center>{{ tournois.datetournois|date('d/m/Y') }}</center></td>
+            <td><center>{{ tournois.datelimit|date('d/m/Y') }}</center></td>
+            <td>
+              <div class="btn-group">
+                <a href="{{ path('asff_tournois_view', {'id': tournois.id}) }}" class="btn btn-sm btn-default">Plus d'infos</a>
+                {% if is_granted('ROLE_JOUEUR') %}
+                  <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ path('asff_tournois_view', {'id': tournois.id}) }}">Plus d'info</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ path('asff_tournois_inscription_add', {'id': tournois.id}) }}">M'inscrire</a></li>
+                    <li><a href="{{ path('asff_tournois_inscription_edit', {'id': tournois.id}) }}">Modifier mon inscription</a></li>
+                    <li><a href="{{ path('asff_tournois_inscription_delete', {'id': tournois.id}) }}">Me désinscrire</a></li>
+                  </ul>
+                {% endif %}
+              </div>
+            </td>
+            {% if is_granted('ROLE_BUREAU') %}
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ path('asff_tournois_getinfo', {'id': tournois.id}) }}">Récupérer les participants</a></li>
+                  <li><a href="{{ path('asff_tournois_edit', {'id': tournois.id}) }}">Modifier l'annonce du tournois</a></li>
+                  <li><a href="{{ path('asff_tournois_delete', {'id': tournois.id}) }}">Supprimer le tournois</a></li>
+                </ul>
+              </div>
+            </td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        <tbody>
+    </table>
+  </div>
+</div>
+  
+{# On n'affiche les liens qu'aux membres du bureau #}
+  {% if is_granted('ROLE_WEBMASTER') %}
+	  <p>
+		<a href="{{ path('asff_tournois_add') }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-add"></i>
+		  Ajouter un tournois
+		</a>
+	  </p>
+  {% endif %}
+{% endblock %}

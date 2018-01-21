@@ -1,0 +1,122 @@
+{# src/ASFF/TournoisBundle/Resources/view/Tournois/view.html.twig #}
+
+{% extends "ASFFTournoisBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+  
+<div class="container-fluid">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+		    <div class="panel-heading"><h2>{{ tournois.adversaire }}</h2></div>
+		    <div class="panel-body">
+			    Le tournois de {{ tournois.adversaire }} aura lieu le {{ tournois.dateTournois|date('d/m/Y') }}.
+				<br>
+				Limite d'inscription : {{ tournois.dateLimit|date('d/m/Y') }}.
+				
+				{% if tournois.series is not null %}
+				<br><br>
+					Séries : {{ tournois.series }}
+			    {% endif %}
+				
+				{% if tournois.TableauxPoules is not null %}
+					Tableaux/Poules : {{ tournois.TableauxPoules }}
+				<br>
+			    {% endif %}
+				
+				{% if tournois.remarque is not null %}
+				<br><br>
+					{{ tournois.remarque }}
+				<br>
+			    {% endif %}
+				
+				{% if tournois.lienTournois is not null %}
+				<br>
+					<a href={{ tournois.lienTournois }}> Lien vers le site du tournois </a>
+			    {% endif %}
+			</div>
+
+			<div class="panel-footer">
+				<i>Ajouter par {{ tournois.auteur }}, le {{ tournois.date|date('d/m/Y') }}</i>
+			</div>
+		</div>
+
+		<div class="btn-group">
+			<a href="{{ path('asff_tournois_home') }}" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i>Retour à la liste</a>
+			{% if is_granted('ROLE_JOUEUR') %}
+				<a href="{{ path('asff_tournois_inscription_add', {'id': tournois.id}) }}" class="btn btn-primary"><i class="glyphicon glyphicon-ok-circle"></i>Je m'inscris</a>
+			{% endif %}
+			{% if is_granted('ROLE_BUREAU') %}
+			<div class="btn-group">
+		        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Administration <span class="caret"></span>
+		        </button>
+		        <ul class="dropdown-menu">
+		          <li><a href="{{ path('asff_tournois_getinfo', {'id': tournois.id}) }}">Récupérer les participants</a></li>
+		          <li role="separator" class="divider"></li>
+		          <li><a href="{{ path('asff_tournois_edit', {'id': tournois.id}) }}">Modifier l'annonce du tournois</a></li>
+		          <li><a href="{{ path('asff_tournois_delete', {'id': tournois.id}) }}">Supprimer le tournois</a></li>
+		        </ul>
+		      </div>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+		    <div class="panel-heading"><h3> Qui est inscrit ? </h3></div>
+		    <div class="panel-body">
+				<table class="table">
+					<thead>
+				      <tr>
+				        <th><center>Date d'inscription</center></th>
+				        <th><center>Nom</center></th>
+				        <th><center>Prénom</center></th>
+				        <th><center>Simple</center></th>
+				        <th><center>Double</center></th>
+				        <th><center>Mixte</center></th>
+				      </tr>
+				    </thead>
+
+				    <tbody>
+					    {% for Inscrit in ListInscrit %}
+					      <tr>
+					        <td><center>{{ Inscrit.date|date('d-m-Y') }}</center></td>
+					        <td><center>{{ Inscrit.user.nom }}</center></td>
+					        <td><center>{{ Inscrit.user.prenom }}</center></td>
+					        <td>
+					        	{% if Inscrit.MatchSimple == true %}
+									<center>Oui</center>
+								{% else %}
+									<center>Non</center>
+								{% endif %}
+							</td>
+							<td>
+					        	{% if Inscrit.MatchDouble == true %}
+									<center>Oui</center>
+								{% else %}
+									<center>Non</center>
+								{% endif %}
+							</td>
+							<td>
+					        	{% if Inscrit.MatchMixte == true %}
+									<center>Oui</center>
+								{% else %}
+									<center>Non</center>
+								{% endif %}
+							</td>
+					      </tr>
+					    {% endfor %}
+				    <tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+<br><hr><br>
+	
+
+
+	
+
+{% endblock %}

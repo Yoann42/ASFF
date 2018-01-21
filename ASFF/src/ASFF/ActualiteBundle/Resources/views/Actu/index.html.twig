@@ -1,0 +1,33 @@
+{# src/ASFF/ActualiteBundle/Resources/views/Actu/index.html.twig #}
+
+{% extends "ASFFActualiteBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+  <h2>Liste des actualités</h2>
+
+  <ul>
+    {% for actu in listActus %}
+      <li>
+        <a href="{{ path('asff_actualite_view', {'id': actu.id}) }}">
+          <h4>{{ actu.titre }}
+        </a>
+        par {{ actu.auteur }},
+        le {{ actu.date|date('d/m/Y') }}</h4>
+      </li>
+    {% else %}
+      <li>Pas (encore !) d'annonces</li>
+    {% endfor %}
+  </ul>
+  
+{# On n'affiche les liens qu'aux membres du bureau #}
+  {% if is_granted('ROLE_BUREAU') %}
+	  <p>
+		<a href="{{ path('asff_actualite_add') }}" class="btn btn-default">
+		  <i class="glyphicon glyphicon-add"></i>
+		  Ajouter une actualité
+		</a>
+	  </p>
+  {% endif %}
+
+{% endblock %}

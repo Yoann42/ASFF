@@ -1,0 +1,9 @@
+# src/ASFF/ActualiteBundle/Resources/config/services.yml
+
+services:
+    asff_actualite.antispam:
+        class: ASFF\ActualiteBundle\Antispam\ASFFAntispam
+        arguments:
+            - "@mailer"
+            - %locale%
+            - 50

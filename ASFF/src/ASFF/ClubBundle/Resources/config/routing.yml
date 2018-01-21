@@ -1,0 +1,41 @@
+# src/ASFF/ClubBundle/Resources/config/routing.yml
+    
+asff_club_association:
+    path:      /le-club/association
+    defaults: 
+        _controller: ASFFClubBundle:LeClub:association
+
+asff_club_contacts:
+    path:      /le-club/contacts
+    defaults: 
+        _controller: ASFFClubBundle:LeClub:contacts
+
+asff_club_lebureau:
+    path:      /le-club/le-bureau
+    defaults: 
+        _controller: ASFFClubBundle:LeClub:lebureau
+
+asff_club_lieuhoraire:
+    path:      /le-club/lieu-horaire
+    defaults: 
+        _controller: ASFFClubBundle:LeClub:lieuhoraire
+
+asff_club_conseils:
+    path:      /infos-techniques/conseils
+    defaults: 
+        _controller: ASFFClubBundle:InfoTech:conseils
+
+asff_club_formations:
+    path:      /infos-techniques/formations
+    defaults: 
+        _controller: ASFFClubBundle:InfoTech:formations
+
+asff_club_liens:
+    path:      /infos-techniques/liens
+    defaults: 
+        _controller: ASFFClubBundle:InfoTech:liens
+
+asff_club_reglesdubad:
+    path:      /infos-techniques/regles-du-bad
+    defaults: 
+        _controller: ASFFClubBundle:InfoTech:reglesdubad

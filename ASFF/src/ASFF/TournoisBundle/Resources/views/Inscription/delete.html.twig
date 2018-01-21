@@ -1,0 +1,21 @@
+{# src/ASFF/TournoisBundle/Resources/view/Tournois/delete.html.twig #}
+
+{% extends "ASFFTournoisBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+  <h2>{{ tournois.adversaire }}</h2>
+  <i>Par {{ tournois.auteur }}, le {{ tournois.date|date('d/m/Y') }}</i>
+
+  <div class="well">
+	Votre désinscription est bien prise en compte.
+  </div>
+  
+  <p>
+	<a href="{{ path('asff_tournois_home') }}" class="btn btn-default">
+		<i class="glyphicon glyphicon-chevron-left"></i>
+		Retour à la liste
+	</a>
+  </p>
+
+{% endblock %}

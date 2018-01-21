@@ -1,0 +1,3 @@
+asff_core_homepage:
+    path:     /
+    defaults: { _controller: ASFFCoreBundle:Default:index }

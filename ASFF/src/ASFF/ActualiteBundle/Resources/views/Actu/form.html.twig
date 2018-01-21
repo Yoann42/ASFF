@@ -1,0 +1,93 @@
+{# src/ASFF/ActualiteBundle/Resources/views/Actu/form.html.twig #}
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>Formulaire des actualités</h3></div>
+  <div class="panel-body">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_label(form.titre) }}
+          {{ form_errors(form.titre) }}
+          {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_label(form.contenu) }}
+          {{ form_errors(form.contenu) }}
+          {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_label(form.image) }}
+          {{ form_errors(form.image) }}
+          {{ form_widget(form.image.file, {'attr': {'class': 'form-HiddenType'}}) }}
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-md-5">
+          {{ form_label(form.auteur) }}
+          {{ form_errors(form.auteur) }}
+          {{ form_widget(form.auteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-5">
+          {{ form_label(form.date) }}
+          {{ form_errors(form.date) }}
+          {{ form_widget(form.date, {'attr': {'class': 'form-DataType'}}) }}
+        </div>
+      </div>
+      
+      <br>
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_label(form.publier) }}
+          {{ form_errors(form.publier) }}
+          {{ form_widget(form.publier, {'attr': {'class': 'form-CheckBoxType'}}) }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_label(form.urgent) }}
+          {{ form_errors(form.urgent) }}
+          {{ form_widget(form.urgent, {'attr': {'class': 'form-CheckBoxType'}}) }}
+        </div>
+      </div>
+
+      <br><br>
+
+      <div class="row">
+        <div class="col-md-10">
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+      </div>
+
+    {# Génération automatique des champs pas encore écrits.
+       Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+       et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+  </div>
+
+  <div class="panel-footer"><i>Attention : cette actualité sera ajoutée directement sur la page d'accueil après validation du formulaire</i></div>
+</div>

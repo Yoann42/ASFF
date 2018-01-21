@@ -1,0 +1,86 @@
+{# src/ASFF/UserBundle/Resources/views/MonComte/index.html.twig #}
+
+{% extends "ASFFUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+	<h2>Bonjour {{ user.prenom }}</h2>
+  
+	<br>
+
+
+	<div class="col-md-8">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3>Mes inscriptions aux tournois</h3></div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th><center>Tournois</center></th>
+							<th><center>Date du tournois</center></th>
+							<th><center>Limite d'inscription</center></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for UsersTournois in ListInscriptionsTournois %}
+							<tr>
+								<td><b><center>{{ UsersTournois.tournois.adversaire }}</center></b></td>
+								<td><center>{{ UsersTournois.tournois.datetournois|date('d/m/Y') }}</center></td>
+								<td><center>{{ UsersTournois.tournois.datelimit|date('d/m/Y') }}</center></td>
+								<td>
+									<div class="btn-group">
+										<a href="{{ path('asff_tournois_view', {'id': UsersTournois.tournois.id}) }}" class="btn btn-sm btn-default">Plus d'infos</a>
+										<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="caret"></span>
+											<span class="sr-only">Toggle Dropdown</span>
+										</button>
+										<ul class="dropdown-menu">
+											<li><a href="{{ path('asff_tournois_view', {'id': UsersTournois.tournois.id}) }}">Plus d'info</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="{{ path('asff_tournois_inscription_edit', {'id': UsersTournois.tournois.id}) }}">Modifier mon inscription</a></li>
+											<li><a href="{{ path('asff_tournois_inscription_delete', {'id': UsersTournois.tournois.id}) }}">Me désinscrire</a></li>
+										</ul>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3>Mon classement</h3></div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+				      <tr>
+				        <th><center>Licence</center></th>
+				        <th><center>Simple</center></th>
+				        <th><center>Double</center></th>
+				        <th><center>Mixte</center></th>
+				      </tr>
+				    </thead>
+
+				    <tbody>
+				      <tr>
+				        <td><center>{{ user.licence }}</center></td>
+				        <td><center><b>{{ user.msn }}</b></center></td>
+				        <td><center><b>{{ user.aim }}</b></center></td>
+				        <td><center><b>{{ user.yim }}</b></center></td>
+				      </tr>
+				    <tbody>
+				</table>
+			</div>
+			<div class="panel-footer">
+				<center><small><i>Si vous ne voyez pas votre classement c'est que vous n'êtes pas encore classé ou que votre numéro de licence est mal renseigné</i></small></center>
+			</div>
+		</div>
+	</div>
+ 
+	<br>
+
+{% endblock fos_user_content %}

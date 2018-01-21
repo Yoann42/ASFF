@@ -1,0 +1,42 @@
+asff_core:
+    resource: "@ASFFCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+asff_user:
+    resource: "@ASFFUserBundle/Resources/config/routing.yml"
+    prefix:   /profile
+    
+asff_tournois:
+    resource: "@ASFFTournoisBundle/Resources/config/routing.yml"
+    prefix:   /tournois
+
+asff_club:
+    resource: "@ASFFClubBundle/Resources/config/routing.yml"
+    prefix:   /
+
+asff_platform:
+    resource: "@ASFFActualiteBundle/Resources/config/routing.yml"
+    prefix:   /news
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+    
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group

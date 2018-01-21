@@ -1,0 +1,45 @@
+{# src/ASFF/ActualiteBundle/Resources/view/Actu/view.html.twig #}
+
+{% extends "ASFFActualiteBundle::layout.html.twig" %}
+
+{% block ocplatform_body %}
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading"><h2>{{ actu.titre }}</h2></div>
+		<div class="panel-body">
+			{% if actu.image is not null %}
+			    <div class="row">
+					<center><img src="{{ asset(actu.image.webPath) }}"
+						width="70%" 
+						height="70%"
+						alt="{{ actu.image.alt }}"/></center>
+				</div>
+			{% endif %}
+			<br><br>
+			{{ actu.contenu }}
+		</div>
+		<div class="panel-footer">
+			<i>Publier par {{ actu.auteur }}, le {{ actu.date|date('d/m/Y') }}</i>
+		</div>
+	</div>
+
+
+	<a href="{{ path('asff_actualite_home') }}" class="btn btn-default">
+		<i class="glyphicon glyphicon-chevron-left"></i>
+		Retour à la liste
+	</a>
+
+	{# On n'affiche les liens qu'aux membres du bureau #}
+	{% if is_granted('ROLE_BUREAU') %}
+		<a href="{{ path('asff_actualite_edit', {'id': actu.id}) }}" class="btn btn-default">
+			<i class="glyphicon glyphicon-edit"></i>
+			Modifier l'actualité
+		</a>
+		<a href="{{ path('asff_actualite_delete', {'id': actu.id}) }}" class="btn btn-danger">
+			<i class="glyphicon glyphicon-trash"></i>
+			Supprimer l'actualité
+		</a>
+	{% endif %}
+
+{% endblock %}

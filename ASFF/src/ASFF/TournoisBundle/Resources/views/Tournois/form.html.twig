@@ -1,0 +1,101 @@
+{# src/ASFF/TournoisBundle/Resources/views/Tournois/form.html.twig #}
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><h3>Formulaire de tournois</h3></div>
+  <div class="panel-body">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+    
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.adversaire) }}
+        {{ form_errors(form.adversaire) }}
+        {{ form_widget(form.adversaire, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        {{ form_label(form.dateTournois) }}
+        {{ form_errors(form.dateTournois) }}
+        {{ form_widget(form.dateTournois, {'attr': {'class': 'form-DataType'}}) }}
+      </div>
+      <div class="col-md-5">
+        {{ form_label(form.dateLimit) }}
+        {{ form_errors(form.dateLimit) }}
+        {{ form_widget(form.dateLimit, {'attr': {'class': 'form-DataType'}}) }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.TableauxPoules) }}
+        {{ form_errors(form.TableauxPoules) }}
+        {{ form_widget(form.TableauxPoules, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.series) }}
+        {{ form_errors(form.series) }}
+        {{ form_widget(form.series, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.remarque) }}
+        {{ form_errors(form.remarque) }}
+        {{ form_widget(form.remarque, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.lienTournois) }}
+        {{ form_errors(form.lienTournois) }}
+        {{ form_widget(form.lienTournois, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-10">
+        {{ form_label(form.lienLigue) }}
+        {{ form_errors(form.lienLigue) }}
+        {{ form_widget(form.lienLigue, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        {{ form_label(form.auteur) }}
+        {{ form_errors(form.auteur) }}
+        {{ form_widget(form.auteur, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      <div class="col-md-5">
+        {{ form_label(form.date) }}
+        {{ form_errors(form.date) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-DataType'}}) }}
+      </div>
+    </div>
+
+    <br>
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits.
+       Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+       et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+  </div>
+
+  <div class="panel-footer"><i>Attention : ce tournois sera ajouté directement sur la page d'accueil après validation du formulaire</i></div>
+  
+</div>

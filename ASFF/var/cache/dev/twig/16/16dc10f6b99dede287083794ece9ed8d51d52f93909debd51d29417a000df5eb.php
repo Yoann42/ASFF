@@ -1,0 +1,253 @@
+<?php
+
+/* @ASFFTournois/Inscription/add.html.twig */
+class __TwigTemplate_78d557ca9969de97bc029e017974747bd0dfa127f2a7606f945d7e8f6e51768e extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        // line 3
+        $this->parent = $this->loadTemplate("ASFFTournoisBundle::layout.html.twig", "@ASFFTournois/Inscription/add.html.twig", 3);
+        $this->blocks = array(
+            'ocplatform_body' => array($this, 'block_ocplatform_body'),
+        );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "ASFFTournoisBundle::layout.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $__internal_7de890e6db62589afd3dfd635762877119a985e515ca3e9a557877c82699223e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_7de890e6db62589afd3dfd635762877119a985e515ca3e9a557877c82699223e->enter($__internal_7de890e6db62589afd3dfd635762877119a985e515ca3e9a557877c82699223e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@ASFFTournois/Inscription/add.html.twig"));
+
+        $__internal_0113a426f837757b967b610c8d397b008d6db75fd29ff50deaadbb19531ccd9b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0113a426f837757b967b610c8d397b008d6db75fd29ff50deaadbb19531ccd9b->enter($__internal_0113a426f837757b967b610c8d397b008d6db75fd29ff50deaadbb19531ccd9b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@ASFFTournois/Inscription/add.html.twig"));
+
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_7de890e6db62589afd3dfd635762877119a985e515ca3e9a557877c82699223e->leave($__internal_7de890e6db62589afd3dfd635762877119a985e515ca3e9a557877c82699223e_prof);
+
+        
+        $__internal_0113a426f837757b967b610c8d397b008d6db75fd29ff50deaadbb19531ccd9b->leave($__internal_0113a426f837757b967b610c8d397b008d6db75fd29ff50deaadbb19531ccd9b_prof);
+
+    }
+
+    // line 5
+    public function block_ocplatform_body($context, array $blocks = array())
+    {
+        $__internal_838e1caea82e0333fc5fd3723ed7519d20c73c148f4ccdb2e85487b112970d72 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_838e1caea82e0333fc5fd3723ed7519d20c73c148f4ccdb2e85487b112970d72->enter($__internal_838e1caea82e0333fc5fd3723ed7519d20c73c148f4ccdb2e85487b112970d72_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ocplatform_body"));
+
+        $__internal_a005fdbe2fde4005a31ed0b8e7ed9e63124debe3883b7831adc98c31173bce8a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a005fdbe2fde4005a31ed0b8e7ed9e63124debe3883b7831adc98c31173bce8a->enter($__internal_a005fdbe2fde4005a31ed0b8e7ed9e63124debe3883b7831adc98c31173bce8a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "ocplatform_body"));
+
+        // line 6
+        echo "
+<h2>";
+        // line 7
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["tournois"] ?? $this->getContext($context, "tournois")), "adversaire", array()), "html", null, true);
+        echo "</h2>
+
+<br>
+  
+";
+        // line 11
+        if ((($context["ok"] ?? $this->getContext($context, "ok")) == 0)) {
+            // line 12
+            echo "\t<div class=\"well\">
+\t\tDésolé ";
+            // line 13
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "prenom", array()), "html", null, true);
+            echo ", mais tu es déjà inscrit.
+\t</div>
+";
+        } else {
+            // line 16
+            echo "\t";
+            if ((($context["ok"] ?? $this->getContext($context, "ok")) == 1)) {
+                // line 17
+                echo "\t\t<div class=\"container-fluid\">
+\t\t\t<div class=\"col-md-8\">
+\t\t\t\t";
+                // line 19
+                echo twig_include($this->env, $context, "ASFFTournoisBundle:Inscription:form.html.twig");
+                echo "
+\t\t\t</div>
+\t\t\t<div class=\"col-md-4\">
+\t\t\t\t<div class=\"panel panel-primary\">
+\t\t\t\t\t<div class=\"panel-heading\"><h3>Classement de ";
+                // line 23
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "prenom", array()), "html", null, true);
+                echo " ";
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "nom", array()), "html", null, true);
+                echo "</h3></div>
+\t\t\t\t\t<div class=\"panel-body\">
+\t\t\t\t\t\t<table class=\"table\">
+\t\t\t\t\t\t\t<thead>
+\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t<th><center>Licence</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Simple</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Double</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Mixte</center></th>
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t</thead>
+
+\t\t\t\t\t\t\t<tbody>
+\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t<td><center>";
+                // line 37
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "licence", array()), "html", null, true);
+                echo "</center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>";
+                // line 38
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "msn", array()), "html", null, true);
+                echo "</b></center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>";
+                // line 39
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "aim", array()), "html", null, true);
+                echo "</b></center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>";
+                // line 40
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "yim", array()), "html", null, true);
+                echo "</b></center></td>
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t<tbody>
+\t\t\t\t\t\t</table>
+\t\t\t\t\t</div>
+\t\t\t\t\t
+\t\t\t\t\t<div class=\"panel-footer\">
+\t\t\t\t\t\t<center><small><i>Si vous ne voyez pas votre classement c'est que vous n'êtes pas encore classé ou que votre numéro de licence est mal renseigné</i></small></center>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t";
+            } else {
+                // line 53
+                echo "\t\t<div class=\"panel panel-primary\">
+\t\t\tDésolé ";
+                // line 54
+                echo twig_escape_filter($this->env, $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "prenom", array()), "html", null, true);
+                echo ", mais la date limite d'inscription est atteinte.
+\t\t</div>
+\t";
+            }
+        }
+        // line 58
+        echo "  
+
+<a href=\"";
+        // line 60
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("asff_tournois_home");
+        echo "\" class=\"btn btn-default\">
+\t<i class=\"glyphicon glyphicon-chevron-left\"></i>
+\tRetour à la liste des tournois
+</a>
+
+
+";
+        
+        $__internal_a005fdbe2fde4005a31ed0b8e7ed9e63124debe3883b7831adc98c31173bce8a->leave($__internal_a005fdbe2fde4005a31ed0b8e7ed9e63124debe3883b7831adc98c31173bce8a_prof);
+
+        
+        $__internal_838e1caea82e0333fc5fd3723ed7519d20c73c148f4ccdb2e85487b112970d72->leave($__internal_838e1caea82e0333fc5fd3723ed7519d20c73c148f4ccdb2e85487b112970d72_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "@ASFFTournois/Inscription/add.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  145 => 60,  141 => 58,  134 => 54,  131 => 53,  115 => 40,  111 => 39,  107 => 38,  103 => 37,  84 => 23,  77 => 19,  73 => 17,  70 => 16,  64 => 13,  61 => 12,  59 => 11,  52 => 7,  49 => 6,  40 => 5,  11 => 3,);
+    }
+
+    /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
+    public function getSource()
+    {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 1.27 and will be removed in 2.0. Use getSourceContext() instead.', E_USER_DEPRECATED);
+
+        return $this->getSourceContext()->getCode();
+    }
+
+    public function getSourceContext()
+    {
+        return new Twig_Source("{# src/ASFF/TournoisBundle/Resources/view/Tournois/add.html.twig #}
+
+{% extends \"ASFFTournoisBundle::layout.html.twig\" %}
+
+{% block ocplatform_body %}
+
+<h2>{{ tournois.adversaire }}</h2>
+
+<br>
+  
+{% if ok == 0 %}
+\t<div class=\"well\">
+\t\tDésolé {{ user.prenom }}, mais tu es déjà inscrit.
+\t</div>
+{% else %}
+\t{% if ok == 1 %}
+\t\t<div class=\"container-fluid\">
+\t\t\t<div class=\"col-md-8\">
+\t\t\t\t{{ include(\"ASFFTournoisBundle:Inscription:form.html.twig\") }}
+\t\t\t</div>
+\t\t\t<div class=\"col-md-4\">
+\t\t\t\t<div class=\"panel panel-primary\">
+\t\t\t\t\t<div class=\"panel-heading\"><h3>Classement de {{ user.prenom }} {{ user.nom }}</h3></div>
+\t\t\t\t\t<div class=\"panel-body\">
+\t\t\t\t\t\t<table class=\"table\">
+\t\t\t\t\t\t\t<thead>
+\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t<th><center>Licence</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Simple</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Double</center></th>
+\t\t\t\t\t\t\t\t\t<th><center>Mixte</center></th>
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t</thead>
+
+\t\t\t\t\t\t\t<tbody>
+\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t<td><center>{{ user.licence }}</center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>{{ user.msn }}</b></center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>{{ user.aim }}</b></center></td>
+\t\t\t\t\t\t\t\t\t<td><center><b>{{ user.yim }}</b></center></td>
+\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t<tbody>
+\t\t\t\t\t\t</table>
+\t\t\t\t\t</div>
+\t\t\t\t\t
+\t\t\t\t\t<div class=\"panel-footer\">
+\t\t\t\t\t\t<center><small><i>Si vous ne voyez pas votre classement c'est que vous n'êtes pas encore classé ou que votre numéro de licence est mal renseigné</i></small></center>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t</div>
+\t{% else %}
+\t\t<div class=\"panel panel-primary\">
+\t\t\tDésolé {{ user.prenom }}, mais la date limite d'inscription est atteinte.
+\t\t</div>
+\t{% endif %}
+{% endif %}
+  
+
+<a href=\"{{ path('asff_tournois_home') }}\" class=\"btn btn-default\">
+\t<i class=\"glyphicon glyphicon-chevron-left\"></i>
+\tRetour à la liste des tournois
+</a>
+
+
+{% endblock %}", "@ASFFTournois/Inscription/add.html.twig", "C:\\wamp64\\www\\Symfony\\src\\ASFF\\TournoisBundle\\Resources\\views\\Inscription\\add.html.twig");
+    }
+}

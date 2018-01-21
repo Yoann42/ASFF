@@ -1,0 +1,185 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}ASFF{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+              </button>
+              <a class="navbar-brand" href="{{ path('asff_core_homepage') }}"><img src="{{ asset('images/logo.jpg') }}" width="20%" height="100%" alt="ASFF"></a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Le Club
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ path('asff_club_association') }}">L'Association</a></li>
+                    <li><a href="{{ path('asff_club_lebureau') }}">Le bureau</a></li>
+                    <li><a href="{{ path('asff_club_lieuhoraire') }}">Lieu/Horaires</a></li> 
+                    <li><a href="{{ path('asff_club_contacts') }}">Contacts</a></li>
+                  </ul>
+                </li>
+             
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Info Tech
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ path('asff_club_liens') }}">Liens</a></li>
+                    <li><a href="{{ path('asff_club_reglesdubad') }}">Règles du bad</a></li>
+                    <li><a href="{{ path('asff_club_conseils') }}">Conseils</a></li> 
+                    <li><a href="{{ path('asff_club_formations') }}">Formations</a></li> 
+                  </ul>
+                </li>
+             
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Compétitions
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ path('asff_tournois_home') }}">Tournois extérieur</a></li>
+                    <li><a href="#">Tournois intérieur</a></li>
+                    <li><a href="#">Interclubs</a></li> 
+                    <li><a href="#">Résultats</a></li> 
+                  </ul>
+                </li>
+              
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Les Jeunes
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Ecole de bad</a></li>
+                    <li><a href="#">Entrainement</a></li>
+                    <li><a href="#">Compétition</a></li> 
+                    <li><a href="#">Résultats</a></li> 
+                  </ul>
+                </li>
+              
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Médias
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ path('asff_actualite_home') }}">News</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Vidéos</a></li> 
+                  </ul>
+                </li>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <li class="active"><a href="{{ path('asff_user_home') }}">Mon Compte</a></li>
+                {% endif %}
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span>  Déconnexion</a></li>
+                {% else %}
+                  <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span>  Connexion</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+      </nav>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+      {% if actu is defined %}
+        {% if actu is not null %}
+          {% if actu.urgent == true %}
+            <div class="container-fluid" style="background-color:#F44336;color:#fff;">
+              <div class="col-md-4">
+                <h1>{{ actu.titre }}</h1>
+              </div>
+              <div class="col-md-8">
+                <br>
+                <h4>{{ actu.contenu }}</h4>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <br><br>
+
+    <div class="row">
+      {% block body %}
+      {% endblock %}
+    </div>
+    
+    <br><br>
+
+    <div class="row" style="background-color:#ffffe6;">
+      <div class="col-md-3">
+        <h4>Gymnase du Levant</h4>
+        <div id="googleMap" style="width:100%;height:150px;"></div>
+
+        <script>
+          function myMap() 
+          {
+            var myLatLng = {lat: 48.808739, lng: 2.052802};
+
+            var mapProp= {center:new google.maps.LatLng(48.808739, 2.052802),zoom:15,};
+            
+          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+          var marker = new google.maps.Marker({position: myLatLng,map: map,title: 'Gymnase du Levant'});
+        }
+        </script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDupu_NhQighgqpVKLTCQQNMzVyIZvmsc&callback=myMap"></script>
+        <br>
+      </div>
+
+      <div class="col-md-2">
+        <h4>Adresse</h4>
+        
+      </div>
+
+      <div class="col-md-1">
+        <h4>Suivez nous</h4>
+        <a href="https://www.facebook.com/Badminton.ASFF/" title="Facebook ASFF"><img src="{{ asset('images/facebook.png') }}" width="30%" height="30%" alt="Facebook" class="img-responsive"/></a>
+        <br>
+        <a href="#" title="Twitter ASFF"><img src="{{ asset('images/twitter.png') }}" width="30%" height="30%" alt="Twitter" class="img-responsive"/></a>
+      </div>
+
+      <div class="col-md-1">
+        <h4>Partenaires</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <footer class="panel-footer" style="background-color:#595959;color:#ffffff;">
+        <center><p>Tous droits réservés - © {{ 'now'|date('Y') }} ASFF Badminton</p></center>
+      </footer>
+    </div>
+
+    {% block javascripts %}
+      {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+  </div>
+</body>
+</html>
